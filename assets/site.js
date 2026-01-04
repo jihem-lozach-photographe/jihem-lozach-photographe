@@ -1,12 +1,26 @@
 const Site = (() => {
   const state = { data: null, lb: { open:false, series:null, idx:0 } };
-
   const qs = (s) => document.querySelector(s);
   const qsa = (s) => Array.from(document.querySelectorAll(s));
 
+  // Base URL robuste (marche avec GitHub Pages en sous-dossier)
+  function getBaseUrl() {
+    // Si <base href="..."> est présent, on l'utilise
+    const b = document.querySelector("base")?.href;
+    if (b) return b.endsWith("/") ? b : (b + "/");
+
+    // Sinon, on prend le dossier courant de la page
+    // ex: https://.../jihem-lozach-photographe/index.html -> base = .../jihem-lozach-photographe/
+    return new URL(".", window.location.href).href;
+  }
+
+  const BASE = getBaseUrl();
+  const abs = (path) => new URL(path, BASE).href;
+
   async function loadContent(){
     if(state.data) return state.data;
-    const res = await fetch("./content.json", { cache: "no-store" });
+    const res = await fetch(abs("content.json"), { cache: "no-store" });
+    if(!res.ok) throw new Error(`content.json introuvable (${res.status})`);
     state.data = await res.json();
     return state.data;
   }
@@ -18,7 +32,7 @@ const Site = (() => {
 
   function setHero(url){
     const hero = qs("#hero");
-    if(hero) hero.style.backgroundImage = `url('${url}')`;
+    if(hero) hero.style.backgroundImage = `url('${abs(url)}')`;
   }
 
   function escapeHtml(str){
@@ -30,7 +44,7 @@ const Site = (() => {
   function cardHTML(item){
     return `
       <a class="card" href="series.html#${encodeURIComponent(item.slug)}" aria-label="${escapeHtml(item.title)}">
-        <img class="card__img" src="${item.cover}" alt="${escapeHtml(item.title)}" loading="lazy">
+        <img class="card__img" src="${abs(item.cover)}" alt="${escapeHtml(item.title)}" loading="lazy">
         <div class="card__body">
           <h3 class="card__title">${escapeHtml(item.title)}</h3>
           <p class="card__sub">${escapeHtml(item.subtitle || "")}</p>
@@ -40,9 +54,10 @@ const Site = (() => {
   }
 
   function seriesHTML(s){
+    const first = (s.images && s.images[0]) ? abs(s.images[0]) : "";
     return `
       <button class="seriesItem" data-slug="${escapeHtml(s.slug)}" type="button" aria-label="Ouvrir ${escapeHtml(s.title)}">
-        <img src="${(s.images && s.images[0]) ? s.images[0] : ""}" alt="${escapeHtml(s.title)}" loading="lazy">
+        <img src="${first}" alt="${escapeHtml(s.title)}" loading="lazy">
         <div class="seriesItem__body">
           <h2 style="margin:0">${escapeHtml(s.title)}</h2>
           <div class="seriesItem__meta">${escapeHtml(s.year || "")}</div>
@@ -73,8 +88,11 @@ const Site = (() => {
       const count = qs("#lbCount");
       const s = state.lb.series;
       if(!s || !img) return;
-      img.src = s.images[state.lb.idx];
+
+      const src = abs(s.images[state.lb.idx]);
+      img.src = src;
       img.alt = s.title;
+
       if(title) title.textContent = s.title;
       if(count) count.textContent = `${state.lb.idx+1} / ${s.images.length}`;
     }
