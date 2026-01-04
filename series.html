@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Séries — Jihem Lozac'h</title>
+  <meta name="description" content="Séries photographiques — grilles, plein écran, navigation." />
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
@@ -19,15 +20,29 @@
 <main class="section">
   <div class="section__head">
     <h1>Séries</h1>
-    <p>On mettra ici la grille + ouverture plein écran.</p>
+    <p>Clique une série pour ouvrir la sélection en plein écran.</p>
   </div>
+
+  <div class="seriesList" id="seriesList"></div>
 </main>
 
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox__close" id="lbClose" aria-label="Fermer">×</button>
+  <button class="lightbox__nav lightbox__nav--prev" id="lbPrev" aria-label="Précédente">‹</button>
+  <img class="lightbox__img" id="lbImg" alt="" />
+  <div class="lightbox__meta">
+    <div id="lbTitle" class="lightbox__title"></div>
+    <div id="lbCount" class="lightbox__count"></div>
+  </div>
+  <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Suivante">›</button>
+</div>
+
 <footer class="footer">
-  <p>© <span id="year"></span> Jihem Lozac'h</p>
+  <p>© <span id="year"></span> Jihem Lozac'h — Photographe</p>
 </footer>
 
 <script src="assets/site.js"></script>
+<script>window.Site.initSeries();</script>
 </body>
 </html>
 
