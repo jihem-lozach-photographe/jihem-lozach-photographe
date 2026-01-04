@@ -1,11 +1,26 @@
-{
+ {
   "site": {
     "heroImage": "images/cover/cover.jpg"
   },
   "featured": [
-    { "slug": "architecture", "title": "Architecture", "cover": "images/architecture/arch-01.jpg", "subtitle": "Lignes, volumes, lumière." },
-    { "slug": "littoral", "title": "Littoral", "cover": "images/littoral/lit-01.jpg", "subtitle": "Horizons, vent, matière." },
-    { "slug": "abstract", "title": "Abstract", "cover": "images/abstract/abs-01.jpg", "subtitle": "Épure, rythme, silence." }
+    {
+      "slug": "architecture",
+      "title": "Architecture",
+      "cover": "images/architecture/arch-01.jpg",
+      "subtitle": "Lignes, volumes, lumière."
+    },
+    {
+      "slug": "littoral",
+      "title": "Littoral",
+      "cover": "images/littoral/lit-01.jpg",
+      "subtitle": "Horizons, vent, matière."
+    },
+    {
+      "slug": "abstract",
+      "title": "Abstract",
+      "cover": "images/abstract/abs-01.jpg",
+      "subtitle": "Épure, rythme, silence."
+    }
   ],
   "series": [
     {
@@ -14,7 +29,9 @@
       "year": "2024–2026",
       "description": "Série sur la rigueur des lignes et la présence de la lumière dans l’espace construit.",
       "images": [
-        "images/architecture/arch-02.jpg"      ]
+        "images/architecture/arch-01.jpg",
+        "images/architecture/arch-02.jpg"
+      ]
     },
     {
       "slug": "littoral",
