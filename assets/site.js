@@ -6,7 +6,7 @@ const Site = (() => {
 
   async function loadContent(){
     if(state.data) return state.data;
-    const res = await fetch("content.json", { cache: "no-store" });
+    const res = await fetch("./content.json", { cache: "no-store" });
     state.data = await res.json();
     return state.data;
   }
