@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Debug</title>
+  <base href="/jihem-lozach-photographe/">
+  <style>
+    body{font-family:system-ui; padding:16px;}
+    pre{white-space:pre-wrap; background:#f6f6f6; padding:12px; border-radius:10px;}
+  </style>
+</head>
+<body>
+  <h1>Debug GitHub Pages</h1>
+  <pre id="out">Chargement…</pre>
+  <script>
+    const out = document.getElementById("out");
+    (async ()=>{
+      try{
+        const base = document.querySelector("base")?.href || new URL(".", location.href).href;
+        const url = new URL("content.json", base).href;
+        const r = await fetch(url, {cache:"no-store"});
+        out.textContent =
+          "BASE: " + base + "\n" +
+          "FETCH: " + url + "\n" +
+          "STATUS: " + r.status + "\n\n" +
+          await r.text();
+      }catch(e){
+        out.textContent = "ERREUR: " + (e && e.message ? e.message : e);
+      }
+    })();
+  </script>
+</body>
+</html>
