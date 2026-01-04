@@ -1,14 +1,64 @@
-
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>À propos — Jihem Lozac'h</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Démarche et biographie — Jihem Lozac'h, photographe." />
+  <link rel="stylesheet" href="assets/style.css" />
 </head>
-<body style="margin:0; font-family:system-ui, -apple-system, Arial, sans-serif; background:#0e0f10; color:#f4f4f2; padding:40px;">
-  <h1>À propos</h1>
-  <p>Photographe. Travail autour de l’espace, du paysage et de la lumière.</p>
-  <p><a href="index.html" style="color:#f4f4f2;">← Retour accueil</a></p>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="index.html">Jihem Lozac'h</a>
+  <nav class="nav">
+    <a href="series.html">Séries</a>
+    <a class="is-active" href="about.html">À propos</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main class="section">
+  <div class="section__head">
+    <h1>À propos</h1>
+    <p>Une écriture photographique sobre, attentive à l’espace, à la lumière et au silence.</p>
+  </div>
+
+  <div class="prose">
+    <h2>Démarche</h2>
+    <p>
+      Mon travail photographique s’inscrit dans une recherche de justesse et de retenue.
+      J’explore les relations entre architecture, paysage et présence humaine indirecte,
+      en privilégiant une approche lente, construite, attentive aux lignes, aux volumes
+      et aux rythmes visuels.
+    </p>
+    <p>
+      Chaque série se développe dans le temps, comme un ensemble cohérent,
+      où la photographie devient un outil de lecture de l’espace plutôt qu’un simple
+      enregistrement du réel.
+    </p>
+
+    <h2>Biographie</h2>
+    <p>
+      Jihem Lozac'h est photographe. Il vit et travaille en France.
+      Son travail interroge la perception des lieux, la structure des espaces
+      et la manière dont la lumière façonne notre rapport au monde construit
+      et au paysage.
+    </p>
+
+    <h2>Commandes & collaborations</h2>
+    <p>
+      Pour toute demande de commande, de collaboration, d’exposition
+      ou d’édition, vous pouvez me contacter directement.
+    </p>
+  </div>
+</main>
+
+<footer class="footer">
+  <p>© <span id="year"></span> Jihem Lozac'h — Photographe</p>
+</footer>
+
+<script src="assets/site.js"></script>
+<script>window.Site.initCommon();</script>
 </body>
 </html>
